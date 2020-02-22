@@ -1,15 +1,14 @@
 <script>
-import { tileLayer } from "leaflet/dist/leaflet-src.esm";
-import { onMounted, ref, computed, inject } from "vue";
-import { props as layerProps, setup as layerSetup } from "../functions/layer";
+import { onMounted, ref, computed, inject } from 'vue';
+import { props as layerProps, setup as layerSetup } from '../functions/layer';
 import {
   props as gridLayerProps,
   setup as gridLayerSetup
-} from "../functions/gridLayer";
+} from '../functions/gridLayer';
 import {
   props as tileLayerProps,
   setup as tileLayerSetup
-} from "../functions/tileLayer";
+} from '../functions/tileLayer';
 
 export default {
   props: {
@@ -23,13 +22,14 @@ export default {
   },
   setup(props) {
     const mapRef = ref({});
-    const addLayer = inject("addLayer");
+    const addLayer = inject('addLayer');
     const options = {
       ...layerSetup(props).options,
       ...gridLayerSetup(props).options,
       ...tileLayerSetup(props).options
     };
-    onMounted(() => {
+    onMounted(async () => {
+      const { tileLayer } = await import('leaflet/dist/leaflet-src.esm');
       mapRef.value = tileLayer(props.url, options);
       addLayer(mapRef.value);
     });

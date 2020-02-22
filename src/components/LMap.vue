@@ -5,8 +5,7 @@
 </template>
 
 <script>
-import { map, CRS } from "leaflet/dist/leaflet-src.esm";
-import { onMounted, ref, computed, provide } from "vue";
+import { onMounted, ref, computed, provide } from 'vue';
 
 export default {
   props: {
@@ -92,8 +91,7 @@ export default {
      */
     crs: {
       type: Object,
-      custom: true,
-      default: () => CRS.EPSG3857
+      custom: true
     },
     maxBoundsViscosity: {
       type: Number,
@@ -166,10 +164,12 @@ export default {
     const removeLayer = layer => {
       mapRef.value.removeLayer(layer);
     };
-    provide("addLayer", addLayer);
-    provide("removeLayer", removeLayer);
+    provide('addLayer', addLayer);
+    provide('removeLayer', removeLayer);
 
-    onMounted(() => {
+    onMounted(async () => {
+      const { map, CRS } = await import('leaflet/dist/leaflet-src.esm');
+      options.crs = options.crs || CRS.EPSG3857;
       mapRef.value = map(root.value, options);
       ready.value = true;
     });
