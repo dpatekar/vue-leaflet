@@ -1,6 +1,12 @@
-import { map, CRS } from 'leaflet/dist/leaflet-src.esm';
+<template>
+  <div style="width:100%; height: 100%" ref="root">
+    <slot v-if="ready"></slot>
+  </div>
+</template>
 
-const { onMounted, ref, computed, provide } = window.Vue;
+<script>
+import { map, CRS } from "leaflet/dist/leaflet-src.esm";
+import { onMounted, ref, computed, provide } from "vue";
 
 export default {
   props: {
@@ -160,8 +166,8 @@ export default {
     const removeLayer = layer => {
       mapRef.value.removeLayer(layer);
     };
-    provide('addLayer', addLayer);
-    provide('removeLayer', removeLayer);
+    provide("addLayer", addLayer);
+    provide("removeLayer", removeLayer);
 
     onMounted(() => {
       mapRef.value = map(root.value, options);
@@ -170,7 +176,6 @@ export default {
 
     const mapObject = computed(() => mapRef.value);
     return { root, ready, mapObject };
-  },
-  template:
-    '<div style="width:100%; height: 100%" ref="root"><slot v-if="ready"></slot></div>'
+  }
 };
+</script>

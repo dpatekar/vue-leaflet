@@ -1,9 +1,9 @@
-const { inject, onUnmounted } = window.Vue;
+import { inject, onUnmounted } from "vue";
 
 export const props = {
   pane: {
     type: String,
-    default: 'overlayPane'
+    default: "overlayPane"
   },
   attribution: {
     type: String,
@@ -27,7 +27,7 @@ export const props = {
 };
 
 export const setup = (props, mapObject) => {
-  const removeLayer = inject('removeLayer');
+  const removeLayer = inject("removeLayer");
 
   const unbindTooltip = () => {
     const tooltip = mapObject ? mapObject.getTooltip() : null;

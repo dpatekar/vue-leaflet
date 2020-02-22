@@ -25,26 +25,13 @@ The aim is to experiment with various techniques and architectures for vue3.
 
 ```bash
 # Install dependencies
-yarn install
+yarn
 
-# Server with hot reload at localhost:5000
+# Server with hot reload at localhost:8080
 yarn run dev
 
 # Build for production with minification
 yarn run build
-```
-
-### [npm](https://www.npmjs.com/)
-
-```bash
-# Install dependencies
-npm install
-
-# Server with hot reload at localhost:5000
-npm run dev
-
-# Build for production with minification
-npm run build
 ```
 
 ## Reference
