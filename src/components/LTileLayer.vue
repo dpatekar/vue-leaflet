@@ -24,9 +24,9 @@ export default {
     const mapRef = ref({});
     const addLayer = inject('addLayer');
     const options = {
-      ...layerSetup(props).options,
-      ...gridLayerSetup(props).options,
-      ...tileLayerSetup(props).options
+      ...layerSetup(props),
+      ...gridLayerSetup(props),
+      ...tileLayerSetup(props)
     };
     onMounted(async () => {
       const { tileLayer } = await import('leaflet/dist/leaflet-src.esm');

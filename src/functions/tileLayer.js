@@ -5,7 +5,7 @@ export const props = {
   },
   subdomains: {
     type: String,
-    default: "abc"
+    default: 'abc'
   },
   detectRetina: {
     type: Boolean,
@@ -19,5 +19,5 @@ export const setup = props => {
     subdomains: props.subdomains,
     detectRetina: props.detectRetina
   };
-  return { options };
+  return options;
 };

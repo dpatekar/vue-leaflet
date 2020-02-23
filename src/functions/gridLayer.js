@@ -30,5 +30,5 @@ export const setup = props => {
     tileSize: props.tileSize,
     noWrap: props.noWrap
   };
-  return { options };
+  return options;
 };
